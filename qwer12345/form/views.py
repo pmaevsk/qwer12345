@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+
+def forms(request):
+    return render(request, 'form/forms.html')
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <form id="form" method="POST">
+        <input type="text" name="name[]"><br>
+    </form>
+    <button onclick="add_field()">ADD FIELD</button><button type="submit">SUBMIT</button>
+    <script>
+        function add_field() {
+            var pg = document.getElementById("form");
+            var new_field = document.createElement("input");
+            var delim = document.createElement("br");
+            new_field.setAttribute("type", "text");
+            new_field.setAttribute("name", "name[]");
+            var pos = pg.childElementCount;
+            pg.insertBefore(delim, pg.childNodes[pos]);
+            pg.insertBefore(new_field, pg.childNodes[pos + 1]);
+        }
+    </script>
+</body>
+
+</html>
