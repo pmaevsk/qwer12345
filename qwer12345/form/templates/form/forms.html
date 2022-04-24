@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-
-<body>
-    <form id="form" method="POST">
-        <input type="text" name="name[]"><br>
-    </form>
-    <button onclick="add_field()">ADD FIELD</button><button type="submit">SUBMIT</button>
-    <script>
+   <body>
+	  <button onclick="add_field()">ADD FIELD</button>
+      <button type="submit" form="multi_form" value="Submit">SUBMIT</button>
+	  <button onclick="location.href='/'">BACK</button>
+      <form id="multi_form" method="POST">{% csrf_token %}
+         <input type="text" name="name0"><br>
+      </form>
+      <script>
+        var k = 0;
         function add_field() {
-            var pg = document.getElementById("form");
+            var page=document.getElementById("multi_form");
             var new_field = document.createElement("input");
             var delim = document.createElement("br");
             new_field.setAttribute("type", "text");
-            new_field.setAttribute("name", "name[]");
-            var pos = pg.childElementCount;
-            pg.insertBefore(delim, pg.childNodes[pos]);
-            pg.insertBefore(new_field, pg.childNodes[pos + 1]);
+            new_field.setAttribute("name", "name" + iterate(k));
+            var pos = page.childElementCount;
+            page.insertBefore(delim, page.childNodes[pos]);
+            page.insertBefore(new_field, page.childNodes[pos + 1]);
+            function iterate(counter) {
+                k = counter + 1;
+                return String(k);
         }
-    </script>
-</body>
-
+        }
+      </script>
+   </body>
 </html>

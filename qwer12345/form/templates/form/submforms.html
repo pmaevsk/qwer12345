@@ -1,0 +1,11 @@
+{% for myform in my_forms %}
+<p>{{myform.pk}}</p>
+{% for field in myform.fields.metadata.form %}
+
+<p>{{field}}</p>
+
+{% endfor %}
+<hr>
+{% endfor %}
+
+<a class="button" href="/">Back</a><br>
